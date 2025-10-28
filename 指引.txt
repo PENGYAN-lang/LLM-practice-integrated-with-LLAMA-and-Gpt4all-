@@ -1,0 +1,44 @@
+# EE5112 Project 1 - Dialogue System (Clinic Chatbot)
+
+## Environment Setup
+1. Install Anaconda (Python 3.9).
+2. Create and activate virtual environment:
+   conda create -n ee5112 python=3.9
+   conda activate ee5112
+3. Install dependencies:
+   pip install tensorflow==1.15 numpy
+
+## Project Structure
+- train.py       → Training script
+- chatbot.py     → Inference / Chat script
+- model.py       → Model definition
+- utils.py       → Text loader and preprocessing
+- data/my_corpus/clinic.txt → Training corpus
+- models/clinic/ → Folder for saving checkpoints and configs
+
+## Training
+To train the chatbot model:
+   python train.py
+
+This will:
+- Preprocess data (build vocab.pkl and sizes.pkl)
+- Train the RNN-based chatbot model
+- Save checkpoints to `models/clinic/`
+- Save `config.pkl` and `chars_vocab.pkl` for inference
+
+## Inference
+After training, run:
+   python chatbot.py
+
+Default settings:
+- save_dir = models/clinic
+- prime = "Doctor: Hello, what seems to be the problem?\nPatient:"
+- length = 300
+- sample = 0
+
+You can then type patient inputs interactively. The chatbot (doctor role) will respond.
+
+## Notes
+- Make sure `data/my_corpus/clinic.txt` contains enough data (use generate_corpus.py if needed).
+- Model may require multiple epochs and larger dataset to generate coherent sentences.
+- If encountering TensorFlow warnings, ignore them; they are from legacy APIs.

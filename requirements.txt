@@ -1,0 +1,6 @@
+
+# Minimal pip packages (Python 3.9 recommended)
+llama-cpp-python
+datasets
+tqdm
+tk
